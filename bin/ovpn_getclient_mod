@@ -32,7 +32,7 @@ fi
 
 get_routes() {
     echo "route-nopull"
-    echo "route ${iproute} 255.255.0.0 ${iproute}"
+    echo "route ${iproute} 255.255.0.0"
 }
 
 get_client_config() {
