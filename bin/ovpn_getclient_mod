@@ -23,7 +23,7 @@ fi
 
 cn="$1"
 parm="$2"
-iproute="$3"
+iproute="${3}"
 
 if [ ! -f "$EASYRSA_PKI/private/${cn}.key" ]; then
     echo "Unable to find \"${cn}\", please try again or generate the key first" >&2
@@ -37,11 +37,12 @@ get_routes() {
 
 get_client_config() {
     mode="$1"
+local routing=$(get_routes)
     echo "
 client
 nobind
 dev $OVPN_DEVICE
-$(get_routes)
+${routing}
 remote-cert-tls server
 
 remote $OVPN_CN $OVPN_PORT $OVPN_PROTO"
