@@ -42,7 +42,8 @@ local routing=$(get_routes)
 client
 nobind
 dev $OVPN_DEVICE
-${routing}
+route-nopull
+route ${iproute} 255.255.0.0
 remote-cert-tls server
 
 remote $OVPN_CN $OVPN_PORT $OVPN_PROTO"
